@@ -53,8 +53,18 @@
 
 -- How much was the total cost for each order?
 
-
+-- SELECT orders.order_date, SUM(products.unit_price) FROM orders
+-- JOIN line_items ON line_items.order_id = orders.id
+-- JOIN products ON products.id = line_items.product_id
+-- GROUP BY orders.order_date;
 
 -- How much has each customer spent in total?
+
+-- SELECT customers.first_name, SUM(products.unit_price) FROM customers
+-- JOIN addresses ON addresses.customer_id = customers.id
+-- JOIN orders ON orders.address_id = addresses.id
+-- JOIN line_items ON line_items.order_id = orders.id
+-- JOIN products ON products.id = line_items.product_id
+-- GROUP BY customers.first_name;
 
 -- How much has each customer spent in total? Customers who have spent $0 should still show up in the table. It should say 0, not NULL (research coalesce).
