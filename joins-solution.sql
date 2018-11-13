@@ -28,15 +28,32 @@
 
 -- Get the number of orders for each customer. NOTE: It is OK if those without orders are not included in results.
 
+-- SELECT customers.first_name, SUM(line_items.quantity) FROM customers
+-- JOIN addresses ON addresses.customer_id = customers.id
+-- JOIN orders ON orders.address_id = addresses.id
+-- JOIN line_items ON line_items.order_id = orders.id
+-- GROUP BY customers.first_name;
+
 -- How many customers do we have?
+
+-- SELECT COUNT(customers.first_name) FROM customers;
 
 -- How many products do we carry?
 
+-- SELECT COUNT(products.id) FROM products;
+
 -- What is the total available on-hand quantity of diet pepsi?
+
+-- SELECT products.description, SUM(warehouse_product.on_hand) FROM products
+-- JOIN warehouse_product ON warehouse_product.product_id = products.id
+-- WHERE products.description = 'diet pepsi'
+-- GROUP BY products.description;
 
 -- Stretch Mode
 
 -- How much was the total cost for each order?
+
+
 
 -- How much has each customer spent in total?
 
