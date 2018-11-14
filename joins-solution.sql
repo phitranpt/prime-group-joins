@@ -2,8 +2,7 @@
 
 -- Get all customers and their addresses.
 
--- SELECT customers.first_name, addresses.street
--- FROM customers
+-- SELECT customers.first_name, addresses.street FROM customers
 -- JOIN addresses ON addresses.customer_id = customers.id;
 
 -- Get all orders and their line items (orders, quantity and product).
@@ -68,3 +67,10 @@
 -- GROUP BY customers.first_name;
 
 -- How much has each customer spent in total? Customers who have spent $0 should still show up in the table. It should say 0, not NULL (research coalesce).
+
+-- SELECT customers.first_name, customers.last_name, COALESCE(SUM(products.unit_price),0) FROM customers 
+-- left JOIN addresses ON addresses.customer_id = customers.id
+-- left JOIN orders on orders.address_id = addresses.id
+-- left JOIN line_items on line_items.order_id = orders.id
+-- left JOIN products on products.id = line_items.product_id
+-- Group BY customers.id;
